@@ -1,6 +1,6 @@
 require './lib/counter.rb'
 
-RSpec.describe 'Counter' do
+RSpec.describe Counter do
   it 'returns "Counted to 8 so far after adding 2 then 6' do
     counter = Counter.new
     counter.add(2)
