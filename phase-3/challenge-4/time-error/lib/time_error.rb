@@ -5,14 +5,12 @@ require 'net/http'
 class TimeError
   # Returns difference in seconds between server time
   # and the time on this computer
-  def initialize(requester, time)
-    # time to be set as nil if not testing
-    @time = time
+  def initialize(requester)
     @requester = requester
   end
 
-  def error
-    return get_server_time - (@time == nil ? Time.now : Time.new(@time))
+  def error(time)
+    return get_server_time - time
   end
 
   private
@@ -24,5 +22,5 @@ class TimeError
   end
 end
 
-#time_error = TimeError.new(Net::HTTP, nil)
-#p time_error.error
+time_error = TimeError.new(Net::HTTP)
+p "Time error: #{time_error.error(Time.now)} "

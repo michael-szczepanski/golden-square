@@ -11,9 +11,9 @@ RSpec.describe TimeError do
       .and_return('{"abbreviation":"BST","client_ip":"82.163.117.26","datetime":"2023-04-17T10:34:47.415222+01:00","day_of_week":1,"day_of_year":107,"dst":true,"dst_from":"2023-03-26T01:00:00+00:00","dst_offset":3600,"dst_until":"2023-10-29T01:00:00+00:00","raw_offset":0,"timezone":"Europe/London","unixtime":1681724087,"utc_datetime":"2023-04-17T09:34:47.415222+00:00","utc_offset":"+01:00","week_number":16}')
 
 
-    time_error = TimeError.new(requester_dbl, time)
+    time_error = TimeError.new(requester_dbl)
     expect(
-      time_error.error
+      time_error.error(Time.new(time))
     ).to eq -958.142311
   end
 end
