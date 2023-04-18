@@ -41,6 +41,7 @@ class Takeaway
   end
 
   def submit_order
+    @io_helper.send_message_to_user
     @io.puts "Message sent"
   end
 
@@ -78,5 +79,5 @@ class Takeaway
   end
 end
 
-#takeaway = Takeaway.new(Kernel)
-#takeaway.run
+takeaway = Takeaway.new(Kernel)
+takeaway.run

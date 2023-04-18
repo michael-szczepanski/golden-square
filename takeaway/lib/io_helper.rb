@@ -1,6 +1,12 @@
+require 'rubygems'
+require 'twilio-ruby'
+
 class IOHelper
   def initialize(io = Kernel)
     @io = io
+    @account_sid = ENV['TWILIO_ACCOUNT_SID']
+    @auth_token = ENV['TWILIO_AUTH_TOKEN']
+    @twilio_client = Twilio::REST::Client.new(@account_sid, @auth_token)
   end
 
   def format_menu(items)
@@ -29,5 +35,16 @@ class IOHelper
       end
       user_choice = nil
     end
+  end
+
+  def send_message_to_user
+    @io.puts "Which phone number would you like to send the message to?"
+    phone_number = @io.gets.chomp
+    message = @twilio_client.messages.create(
+      body: 'Hello, your order will arrive soon',
+      from: '+447380309064',
+      to: phone_number
+    )
+    puts message.sid
   end
 end
