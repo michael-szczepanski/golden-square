@@ -31,7 +31,7 @@ def run: starting method
 def user_menu: menu manager dealing with IO
 
 class Printer
-def format(array): returns a formatted string for given array
+def format_menu(array): returns a formatted string for given array
 def user_menu: returns the user_menu as a string
 
 ## Examples
