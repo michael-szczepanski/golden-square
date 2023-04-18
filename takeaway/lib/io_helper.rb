@@ -41,10 +41,15 @@ class IOHelper
     @io.puts "Which phone number would you like to send the message to?"
     phone_number = @io.gets.chomp
     message = @twilio_client.messages.create(
-      body: 'Hello, your order will arrive soon',
+      body: "Hello, your order will arrive by #{get_estimated_time_of_delivery}",
       from: '+447380309064',
       to: phone_number
     )
     puts message.sid
+  end
+
+  def get_estimated_time_of_delivery
+    time_str = Time.now + rand(10000000)
+    return time_str.strftime("%I:%M %p on %d of %B, %Y")
   end
 end

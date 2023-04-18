@@ -79,5 +79,5 @@ class Takeaway
   end
 end
 
-takeaway = Takeaway.new(Kernel)
-takeaway.run
+#takeaway = Takeaway.new(Kernel)
+#takeaway.run
